@@ -48,5 +48,7 @@
             @endforelse
         </x-slot>
     </x-table>
-    {{ $users->links() }}
+    <div>
+        {{ $users->links() }}
+    </div>
 </div>
