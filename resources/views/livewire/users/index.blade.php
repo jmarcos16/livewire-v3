@@ -1,8 +1,6 @@
 <div>
 
-    <div>
-        <x-text-input class="py-2" wire:model.live="search" placeholder="Search users..." />
-    </div>
+    <input type="text" class="form-control mb-3 rounded" wire:model.live="search" placeholder="Search users..." />
 
     <x-table>
         <x-slot name="head">
@@ -48,7 +46,5 @@
             @endforelse
         </x-slot>
     </x-table>
-    <div>
-        {{ $users->links() }}
-    </div>
+    {{ $users->links() }}
 </div>

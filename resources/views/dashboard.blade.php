@@ -7,8 +7,7 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-8">
-            <livewire:user />
-            {{-- <livewire:demo /> --}}
+            <livewire:users.index />
         </div>
     </div>
 </x-app-layout>
