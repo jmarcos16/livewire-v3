@@ -1,18 +1,35 @@
 <div>
 
-    <input type="text" class="form-control mb-3 rounded" wire:model.live="search" placeholder="Search users..." />
+    <input type="text" class="mb-3 rounded form-control" wire:model.live="search" placeholder="Search users..." />
 
     <x-table>
         <x-slot name="head">
+            <x-table.heading 
+                scope="col"
+                sortable
+                :direction="$sortField === 'id' ? $sortDirection : null"
+                wire:click="sortBy('id')"
+                class="px-6 py-3 text-sm font-semibold text-left text-gray-900">
+                #
+            </x-table.heading>
             <x-table.heading scope="col"
-                class="px-6 py-3 text-sm font-semibold text-left text-gray-900">#</x-table.heading>
-            <x-table.heading scope="col"
+                wire:click="sortBy('name')"
+                sortable
+                :direction="$sortField === 'name' ? $sortDirection : null"
                 class="px-6 py-3 text-sm font-semibold text-left text-gray-900">User</x-table.heading>
             <x-table.heading scope="col"
+                wire:click="sortBy('email')"
+                sortable
+                :direction="$sortField === 'email' ? $sortDirection : null"
                 class="px-6 py-3 text-sm font-semibold text-left text-gray-900">Email</x-table.heading>
             <x-table.heading scope="col"
                 class="px-6 py-3 text-sm font-semibold text-left text-gray-900">Status</x-table.heading>
-            <x-table.heading scope="col" class="px-6 py-3 text-sm font-semibold text-left text-gray-900">Created
+            <x-table.heading 
+                scope="col" 
+                sortable
+                :direction="$sortField === 'created_at' ? $sortDirection : null"
+                wire:click="sortBy('created_at')"
+                class="px-6 py-3 text-sm font-semibold text-left text-gray-900">Created
                 At</x-table.heading>
         </x-slot>
         <x-slot name="body">

@@ -14,8 +14,26 @@ class Index extends Component
     #[Url]
     public string $search = '';
 
+    #[Url]
+    public string $sortField = 'name';
+
+    #[Url]
+    public string $sortDirection = 'asc';
+
     public function updatingSearch(): void
     {
+        $this->resetPage();
+    }
+
+    public function sortBy(string $field): void
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+
+        $this->sortField = $field;
         $this->resetPage();
     }
 
@@ -28,6 +46,7 @@ class Index extends Component
                     $query->where('name', 'like', "%{$this->search}%")
                         ->orWhere('email', 'like', "%{$this->search}%");
                 })
+                ->orderBy($this->sortField, $this->sortDirection)
                 ->paginate(8),
         ]);
     }
